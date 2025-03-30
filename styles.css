@@ -1,0 +1,15 @@
+body {  
+    font-family: Arial, sans-serif;  
+    background-color: #f4f4f4;  
+}  
+
+.container {  
+    margin-top: 50px;  
+}  
+
+.col-md-6 {  
+    padding: 20px;  
+    background-color: #fff;  
+    border-radius: 5px;  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+}  

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi Tiết Phim</title>
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Chi Tiết Phim</h1>
+   
+      <button id="back-button">Trở Về</button>
+    </header>
+    <main id="movie-detail"></main>
+
+    <script>
+      function getMovieDetails() {
+        const params = new URLSearchParams(window.location.search);
+        const movie_id = params.get("id");
+        // load du lieu tu api
+        const options = {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZmVkZjRhYTJiYWI1MjIxZWE2OTBjNDVjODBhMzc3NSIsIm5iZiI6MTczNjUxNzEyMS41OTAwMDAyLCJzdWIiOiI2NzgxMjYwMTM0YTRlNzVlNDk3YjU1OTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.B8JzunVnF_Pr2cSKc9qY7p3C2X-ChY-k3md-chsRrKU",
+          },
+        };
+
+        fetch(
+          `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US`,
+          options
+        )
+          .then((res) => res.json())
+          .then((movie) => {
+            console.log(movie);
+            // load thong tin len html
+            const movieDetail = document.getElementById("movie-detail");
+            movieDetail.innerHTML = `  
+            <img src="https://image.tmdb.org/t/p/w500/${movie.backdrop_path}" alt="${movie.title}">  
+            <h2>${movie.title}</h2>  
+            <p>Năm: ${movie.release_date}</p>  
+            <p>Ngôn ngữ: Tiếng Anh</p>  
+            <p>Tóm tắt: ${movie.overview}</p>  
+            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"> 
+            <p>Doanh thu: $${movie.budget}</p>  
+            <p>Mức độ phổ biến: $${movie.popularity}</p>  
+            <p>Thời lượng: ${movie.runtime} phút</p>
+            <p>Đánh giá: ${movie.vote_average}/ ${movie.vote_count}</p> 
+            <p><a href="${movie.homepage}" target="_blank">Homepage của phim</a></p>  
+        `;
+          })
+          .catch((err) => alert(err));
+      }
+
+      document.addEventListener("DOMContentLoaded", getMovieDetails);
+
+      document
+    .getElementById("back-button")
+    .addEventListener("click", function () {
+      
+      // Chuyển hướng về trang index
+      window.location.href = "../index.html";
+    });
+    </script>
+   
+   <style>
+button {  
+    padding: 10px;  
+    background: #D9ACF5; /* Màu xanh lá cây */  
+    color: #fff;  
+    border: none;  
+    border-radius: 4px;  
+    cursor: pointer;  
+    transition: background 0.3s;  
+}  
+
+button:hover {  
+    background: #C780FA; /* Màu nền khi di chuột qua */  
+}  
+    </style>
+  </body>
+</html>

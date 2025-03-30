@@ -1,0 +1,46 @@
+<!DOCTYPE html>  
+<html lang="vi">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Đăng ký</title>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="styles.css">  
+</head>  
+<body>  
+    <div class="container">  
+        <div class="row justify-content-center"> <!-- Thay đổi để căn giữa -->  
+            <div class="col-md-6"> <!-- Điều chỉnh kích thước cột -->  
+                <h2>Đăng ký</h2>  
+                <form id="signupForm">  
+                    <div class="form-group">  
+                        <label for="signupEmail">Email:</label>  
+                        <input type="email" class="form-control" id="signupEmail" required>  
+                    </div>  
+                    <div class="form-group">  
+                        <label for="signupPassword">Mật khẩu:</label>  
+                        <input type="password" class="form-control" id="signupPassword" required>  
+                    </div>  
+                    <div class="form-group">  
+                        <label for="confirmPassword">Xác nhận mật khẩu:</label>  
+                        <input type="password" class="form-control" id="confirmPassword" required>  
+                    </div>  
+                    <button type="submit" class="btn btn-success">Đăng ký</button>  
+                    <p>Bạn đã có tài khoản? <a href="login.html" id="showLogin">Đăng nhập</a></p>  
+                    <hr>  
+                    <button type="button" class="btn btn-primary">Login with Facebook</button>  
+                    <button type="button" class="btn btn-danger">Login with Google</button>  
+                </form>  
+            </div>  
+        </div>  
+    </div>  
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>  
+    <script type="module" src="./js/firebase.js"></script> 
+
+</body>  
+</html> 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh Sách Phim</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1> Phim hay.net🔥  </h1>
+      <p>Nơi Lựa Chọn Phim Hay Của Bạn </p>
+      <input type="text" id="search" placeholder="Tìm kiếm phim..." />
+    </header>
+    <main id="movie-list"></main>
+
+    <footer>
+
+      <button1 id="contact-button">Liên Hệ</button1>
+      <main>
+        <div id="user-info"></div>
+        <button id="logout-button">Đăng xuất</button>
+      </main>
+    </footer>
+
+    <script src="./js/load_api.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/firebase.js"></script>
+
+    <script>
+    document
+    .getElementById("contact-button")
+    .addEventListener("click", function () {
+      
+      // Chuyển hướng về trang index
+      window.location.href = "./html/contact.html";
+    });
+   </script>
+  
+</body>
+</html>
+   
