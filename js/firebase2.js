@@ -31,7 +31,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         alert("🎉 Đăng nhập thành công!");
 
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
         }, 1000);
     } catch (error) {
         console.error("❌ Lỗi đăng nhập:", error);
