@@ -9,7 +9,6 @@
   <body>
     <header>
       <h1>Chi Tiết Phim</h1>
-   
       <button id="back-button">Trở Về</button>
     </header>
     <main id="movie-detail"></main>
@@ -40,14 +39,21 @@
             movieDetail.innerHTML = `  
             <img src="https://image.tmdb.org/t/p/w500/${movie.backdrop_path}" alt="${movie.title}">  
             <h2>${movie.title}</h2>  
-            <p>Năm: ${movie.release_date}</p>  
+            <p>Năm: ${movie.release_date}</p> 
+            <p>Lượt xem: ⬆️ 500,000 views</p> 
+                   <p>Đánh giá: ${movie.vote_average}/ ${movie.vote_count} 
+              <span style="color: gold;">${'★'.repeat(5)}</span>
             <p>Ngôn ngữ: Tiếng Anh</p>  
             <p>Tóm tắt: ${movie.overview}</p>  
+        
             <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"> 
             <p>Doanh thu: $${movie.budget}</p>  
             <p>Mức độ phổ biến: $${movie.popularity}</p>  
             <p>Thời lượng: ${movie.runtime} phút</p>
-            <p>Đánh giá: ${movie.vote_average}/ ${movie.vote_count}</p> 
+            <p>Đánh giá: ${movie.vote_average}/ ${movie.vote_count} 
+              <span style="color: gold;">${'★'.repeat(5)}</span>
+            </p>
+   
             <p><a href="${movie.homepage}" target="_blank">Homepage của phim</a></p>  
         `;
           })
@@ -57,29 +63,27 @@
       document.addEventListener("DOMContentLoaded", getMovieDetails);
 
       document
-    .getElementById("back-button")
-    .addEventListener("click", function () {
-      
-      // Chuyển hướng về trang index
-      window.location.href = "../index.html";
-    });
-   
+        .getElementById("back-button")
+        .addEventListener("click", function () {
+          // Chuyển hướng về trang index
+          window.location.href = "../index.html";
+        });
     </script>
-   
-   <style>
-button {  
-    padding: 10px;  
-    background: #D9ACF5; /* Màu xanh lá cây */  
-    color: #fff;  
-    border: none;  
-    border-radius: 4px;  
-    cursor: pointer;  
-    transition: background 0.3s;  
-}  
 
-button:hover {  
-    background: #C780FA; /* Màu nền khi di chuột qua */  
-}  
+    <style>
+      button {  
+          padding: 10px;  
+          background: #D9ACF5; /* Màu xanh lá cây */  
+          color: #fff;  
+          border: none;  
+          border-radius: 4px;  
+          cursor: pointer;  
+          transition: background 0.3s;  
+      }  
+
+      button:hover {  
+          background: #C780FA; /* Màu nền khi di chuột qua */  
+      }  
     </style>
   </body>
 </html>
