@@ -14,7 +14,7 @@
     <main id="movie-detail"></main>
 
     <script>
-      function getMovieDetails() {
+         function getMovieDetails() {
         const params = new URLSearchParams(window.location.search);
         const movie_id = params.get("id");
         // load du lieu tu api
@@ -41,20 +41,26 @@
             <h2>${movie.title}</h2>  
             <p>Năm: ${movie.release_date}</p> 
             <p>Lượt xem: ⬆️ 500,000 views</p> 
-                   <p>Đánh giá: ${movie.vote_average}/ ${movie.vote_count} 
-              <span style="color: gold;">${'★'.repeat(5)}</span>
-            <p>Ngôn ngữ: Tiếng Anh</p>  
-            <p>Tóm tắt: ${movie.overview}</p>  
-        
-            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"> 
-            <p>Doanh thu: $${movie.budget}</p>  
-            <p>Mức độ phổ biến: $${movie.popularity}</p>  
-            <p>Thời lượng: ${movie.runtime} phút</p>
             <p>Đánh giá: ${movie.vote_average}/ ${movie.vote_count} 
               <span style="color: gold;">${'★'.repeat(5)}</span>
             </p>
-   
+            <p>Ngôn ngữ: Tiếng Anh</p>  
+            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"> 
+            <p>Tóm tắt: ${movie.overview}</p>  
+            <p>Doanh thu: $${movie.budget}</p>  
+            <p>Mức độ phổ biến: $${movie.popularity}</p>  
+            <p>Thời lượng: ${movie.runtime} phút</p>
             <p><a href="${movie.homepage}" target="_blank">Homepage của phim</a></p>  
+
+            <h3>6 bình luận</h3>
+            <ul>
+             <p>  @huskytv:    Phim hay ngoài mong đợi luôn! Diễn xuất của dàn diễn viên quá đỉnh 🥹👏</p>
+             <p>  @annguyend:  Nội dung lôi cuốn từ đầu đến cuối, không có phút nào nhàm chán!</p>
+             <p>  @123thoan:   Xem xong vẫn còn ám ảnh mấy ngày sau 😱 Quá xuất sắc!</p>
+             <p>  @tdung763:   Nhạc phim và hình ảnh đều rất đầu tư. Mình cho 9/10!</p>
+             <p>  @mtpsontung: Phim rất đáng để xem lại lần 2. Ai chưa xem thì đừng bỏ lỡ nha!</p>
+             <p>  @mixigaming: Nội dung ổn, nhưng phần cuối hơi khó hiểu. Ai giải thích giúp với? </p>
+            </ul>
         `;
           })
           .catch((err) => alert(err));
