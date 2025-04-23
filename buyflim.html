@@ -1,0 +1,335 @@
+<!DOCTYPE html>  
+<html lang="vi">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Thanh toán xem phim</title>  
+    
+
+</head>  
+<body>  
+    <div class="container">  
+        <h1>Thanh toán xem phim</h1>  
+        
+        <div class="notice">  
+            <p>Bạn phải thanh toán tại đây bằng cách NẠP THẺ hoặc Chuyển Khoản vào STK: <strong>09282237895</strong> để lấy code xem full phim.</p>  
+        </div>  
+        
+        <div class="payment-section">  
+            <div class="payment-method">  
+                <h2>Nạp thẻ cào</h2>  
+                <div class="card-input">  
+                    <select id="card-type">  
+                        <option value="">Chọn loại thẻ</option>  
+                        <option value="viettel">Viettel</option>  
+                        <option value="mobifone">Mobifone</option>  
+                        <option value="vinaphone">Vinaphone</option>  
+                        <option value="gate">Gate</option>  
+                        <option value="zing">Zing</option>  
+                    </select>  
+                    
+                    <input type="text" id="card-number" placeholder="Số seri thẻ">  
+                    
+                    <input type="text" id="card-pin" placeholder="Mã thẻ">  
+                    
+                    <input type="text" id="card-value" placeholder="Mệnh giá (VND)" readonly>  
+                    
+                    <div class="card-value-container">  
+                        <div class="value-option" onclick="selectValue(20000)">20,000 VND</div>  
+                        <div class="value-option" onclick="selectValue(50000)">50,000 VND</div>  
+                        <div class="value-option" onclick="selectValue(100000)">100,000 VND</div>  
+                        <div class="value-option" onclick="selectValue(200000)">200,000 VND</div>  
+                        <div class="value-option" onclick="selectValue(300000)">300,000 VND</div>  
+                        <div class="value-option" onclick="selectValue(500000)">500,000 VND</div>  
+                    </div>  
+                    
+                    <button class="charge-btn" onclick="chargeCard()">Nạp Thẻ</button>  
+                </div>  
+            </div>  
+            
+            <div class="payment-method">  
+                <h2>Chuyển khoản ngân hàng</h2>  
+                <div class="bank-info">  
+                    <p>Ngân hàng: <strong>Vietcombank</strong></p>  
+                    <p>Số tài khoản: <strong>09282237895</strong></p>  
+                    <p>Tên tài khoản: <strong>NGUYEN DUC AN</strong></p>  
+                    <p>Nội dung chuyển khoản: <strong>"Tên Phim + SĐT của bạn 📞"</strong></p>  
+                </div>  
+            </div>  
+        </div>  
+        
+        <button class="get-code-btn" onclick="getCode()">Lấy mã xem phim</button>  
+    </div>  
+    
+    <div id="movieModal" class="modal">  
+        <div class="modal-content">  
+            <span class="close" onclick="closeModal()">&times;</span>  
+            <h2>Mã Code xem phim của bạn:</h2>  
+            <div class="movie-title" id="modalMovieTitle"></div>  
+            <div class="movie-code" id="modalMovieCode"></div>  
+           
+        </div>  
+    </div>  
+
+    <style>
+                body {  
+            font-family: Arial, sans-serif;  
+            background-color: #f5f5f5;  
+            margin: 0;  
+            padding: 0;  
+            color: #333;  
+        }  
+        
+        .container {  
+            max-width: 800px;  
+            margin: 50px auto;  
+            background-color: #fff;  
+            padding: 30px;  
+            border-radius: 10px;  
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);  
+        }  
+        
+        h1 {  
+            color: #e74c3c;  
+            text-align: center;  
+            margin-bottom: 30px;  
+        }  
+        
+        .notice {  
+            background-color: #f8d7da;  
+            color: #721c24;  
+            padding: 15px;  
+            border-radius: 5px;  
+            margin-bottom: 20px;  
+            border-left: 5px solid #f5c6cb;  
+        }  
+        
+        .payment-section {  
+            margin-bottom: 30px;  
+        }  
+        
+        .payment-method {  
+            margin-bottom: 20px;  
+        }  
+        
+        .payment-method h2 {  
+            color: #3498db;  
+            border-bottom: 2px solid #3498db;  
+            padding-bottom: 10px;  
+            margin-bottom: 15px;  
+        }  
+        
+        .card-input {  
+            display: flex;  
+            flex-direction: column;  
+            gap: 10px;  
+        }  
+        
+        input, select {  
+            padding: 12px;  
+            border: 1px solid #ddd;  
+            border-radius: 5px;  
+            font-size: 16px;  
+        }  
+        
+        .bank-info {  
+            background-color: #e8f4fc;  
+            padding: 15px;  
+            border-radius: 5px;  
+            margin-top: 15px;  
+        }  
+        
+        .bank-info p {  
+            margin: 5px 0;  
+            font-weight: bold;  
+        }  
+        
+        .get-code-btn {  
+            background-color: #2ecc71;  
+            color: white;  
+            border: none;  
+            padding: 15px 30px;  
+            font-size: 18px;  
+            border-radius: 5px;  
+            cursor: pointer;  
+            display: block;  
+            margin: 30px auto 0;  
+            transition: background-color 0.3s;  
+        }  
+        
+        .get-code-btn:hover {  
+            background-color: #27ae60;  
+        }  
+        
+        .card-value-container {  
+            display: flex;  
+            flex-wrap: wrap;  
+            gap: 10px;  
+            margin-top: 10px;  
+        }  
+        
+        .value-option {  
+            background-color: #f1f1f1;  
+            border: 1px solid #ddd;  
+            border-radius: 5px;  
+            padding: 8px 12px;  
+            cursor: pointer;  
+            transition: all 0.3s;  
+        }  
+        
+        .value-option:hover {  
+            background-color: #3498db;  
+            color: white;  
+            border-color: #3498db;  
+        }  
+        
+        .value-option.selected {  
+            background-color: #3498db;  
+            color: white;  
+            border-color: #3498db;  
+        }  
+        
+        .charge-btn {  
+            background-color: #3498db;  
+            color: white;  
+            border: none;  
+            padding: 12px 20px;  
+            font-size: 16px;  
+            border-radius: 5px;  
+            cursor: pointer;  
+            margin-top: 15px;  
+            transition: background-color 0.3s;  
+            width: 100%;  
+        }  
+        
+        .charge-btn:hover {  
+            background-color: #2980b9;  
+        }  
+        
+        .modal {  
+            display: none;  
+            position: fixed;  
+            z-index: 1;  
+            left: 0;  
+            top: 0;  
+            width: 100%;  
+            height: 100%;  
+            background-color: rgba(0,0,0,0.7);  
+        }  
+        
+        .modal-content {  
+            background-color: #fefefe;  
+            margin: 15% auto;  
+            padding: 30px;  
+            border-radius: 10px;  
+            width: 80%;  
+            max-width: 500px;  
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);  
+            text-align: center;  
+        }  
+        
+        .close {  
+            color: #aaa;  
+            float: right;  
+            font-size: 28px;  
+            font-weight: bold;  
+            cursor: pointer;  
+        }  
+        
+        .movie-title {  
+            color: #e74c3c;  
+            font-size: 20px;  
+            margin: 15px 0;  
+        }  
+        
+        .movie-code {  
+            font-size: 24px;  
+            font-weight: bold;  
+            color: #2ecc71;  
+            margin: 20px 0;  
+            padding: 10px;  
+            background-color: #f8f9fa;  
+            border-radius: 5px;  
+        }  
+    </style>  
+   
+    
+    <script>  
+        function selectValue(value) {  
+            document.querySelectorAll('.value-option').forEach(option => {  
+                option.classList.remove('selected');  
+            });  
+            
+            event.target.classList.add('selected');  
+            document.getElementById('card-value').value = value.toLocaleString('vi-VN') + ' VND';  
+        }  
+        
+        function chargeCard() {  
+            const cardType = document.getElementById('card-type').value;  
+            const cardNumber = document.getElementById('card-number').value;  
+            const cardPin = document.getElementById('card-pin').value;  
+            const cardValue = document.getElementById('card-value').value;  
+            
+            if (!cardType) {  
+                alert('Vui lòng chọn loại thẻ!');  
+                return;  
+            }  
+            
+            if (!cardNumber || !cardPin) {  
+                alert('Vui lòng nhập đầy đủ số seri và mã thẻ!');  
+                return;  
+            }  
+            
+            if (!cardValue) {  
+                alert('Vui lòng chọn mệnh giá thẻ!');  
+                return;  
+            }  
+            
+            alert(`Nạp thẻ thành công!\nLoại thẻ: ${cardType}\nMệnh giá: ${cardValue}\nMã thẻ: ${cardPin.substring(0, 4)}****`);  
+        }  
+        
+        function getCode() {  
+            const movies = [  
+                "A Knight's War",   
+                "Home Sweet Home: Rebirth",   
+                "The Siege",   
+                "Cleaner",   
+                "The Hard Hit",   
+                "The Passion of the Christ",   
+                "Mufasa: The Lion King",   
+                "Conclave",   
+                "Sonic the Hedgehog 3",   
+                "The Codes of War",   
+                "Novocaine",   
+                "Gunslingers",   
+                "Sinners",   
+                "The Woman in the Yard",   
+                "Moana 2",   
+                "A Working Man",   
+                "In the Lost Lands",   
+                "A Minecraft Movie",   
+                "Captain America: Brave New World",   
+                "G20"  
+            ];  
+            
+            const randomMovie = movies[Math.floor(Math.random() * movies.length)];  
+            const randomCode = "" + Math.floor(Math.random() * 10000);  
+            
+            document.getElementById('modalMovieTitle').textContent = randomMovie;  
+            document.getElementById('modalMovieCode').textContent = randomCode;  
+            document.getElementById('movieModal').style.display = 'block';  
+        }  
+        
+        function closeModal() {  
+            document.getElementById('movieModal').style.display = 'none';  
+        }  
+        
+        window.onclick = function(event) {  
+            const modal = document.getElementById('movieModal');  
+            if (event.target == modal) {  
+                modal.style.display = 'none';  
+            }  
+        }  
+    </script>  
+</body>  
+</html>  

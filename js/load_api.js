@@ -29,9 +29,17 @@ function displayMovies() {
               }" alt="${movie.original_title}">  
               <h2>${movie.original_title}</h2>  
               <p>Năm: ${movie.release_date}</p>  
-              <button onclick="showDetails('${encodeURIComponent(
+             
+      
+              <button onclick="showbuyflim('${encodeURIComponent(
                 movie.id
-              )}')">Xem chi tiết</button>  
+              )}')">Thanh Toán Để Xem Phim 📝 </button>  
+
+               <button onclick="showDetails('${encodeURIComponent(
+                movie.id
+              )}')">Xem chi tiết phim </button>  
+      
+              
           `;
           movieList.appendChild(movieDiv);
         });
@@ -39,6 +47,12 @@ function displayMovies() {
       .catch((error) => console.log(error));
   }
   
+
+
+   function showbuyflim(id) {
+    window.location.href = `buyflim.html?id=${id}`;
+  }
+
   function showDetails(id) {
     window.location.href = `./html/detail.html?id=${id}`;
   }
