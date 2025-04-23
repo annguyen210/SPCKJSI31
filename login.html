@@ -1,37 +1,31 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">  
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2>Đăng nhập</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="loginEmail">Email:</label>
-                        <input type="email" class="form-control" id="loginEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Mật khẩu:</label>
-                        <input type="password" class="form-control" id="loginPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                    <p>Bạn chưa có tài khoản? <a href="signup.html">Đăng ký</a></p>
-                </form>
+    <div class="login-container">
+        <h2>Đăng Nhập</h2>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <div class="checkbox">
+
+               
             </div>
-        </div>
+            <p>Bạn chưa có tài khoản? 👉<a href="signup.html">Đăng ký</a></p>
+            <button type="submit">Đăng Nhập</button>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>  
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     <script type="module" src="./js/firebase2.js"></script>
-
 </body>
 </html>
+                    
+  
