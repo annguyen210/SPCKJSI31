@@ -50,7 +50,7 @@ function displayMovies() {
 
 
    function showbuyflim(id) {
-    window.location.href = `buyflim.html?id=${id}`;
+    window.location.href = `buyfilm.html?id=${id}`;
   }
 
   function showDetails(id) {
