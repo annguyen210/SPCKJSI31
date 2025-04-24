@@ -31,7 +31,7 @@ function displayMovies() {
               <p>Năm: ${movie.release_date}</p>  
              
       
-              <button onclick="showbuyflim('${encodeURIComponent(
+              <button onclick="showbuyfilm('${encodeURIComponent(
                 movie.id
               )}')">Thanh Toán Để Xem Phim 📝 </button>  
 
@@ -49,7 +49,7 @@ function displayMovies() {
   
 
 
-   function showbuyflim(id) {
+   function showbuyfilm(id) {
     window.location.href = `buyfilm.html?id=${id}`;
   }
 
