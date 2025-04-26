@@ -21,11 +21,12 @@
                 <div class="card-input">  
                     <select id="card-type">  
                         <option value="">Chọn loại thẻ</option>  
-                        <option value="viettel">Viettel</option>  
-                        <option value="mobifone">Mobifone</option>  
-                        <option value="vinaphone">Vinaphone</option>  
-                        <option value="gate">Gate</option>  
-                        <option value="zing">Zing</option>  
+                        <option value="Viettel">Viettel</option>  
+                        <option value="Mobifone">Mobifone</option>  
+                        <option value="Vinaphone">Vinaphone</option>  
+                        <option value="Gate">Gate</option>  
+                        <option value="Zing">Zing</option>  
+                        <option value="Garena">Garena</option>  
                     </select>  
                     
                     <input type="text" id="card-number" placeholder="Số seri thẻ">  
@@ -33,6 +34,8 @@
                     <input type="text" id="card-pin" placeholder="Mã thẻ">  
                     
                     <input type="text" id="card-value" placeholder="Mệnh giá (VND)" readonly>  
+
+                    <input type="text" id="card-name" placeholder="Chọn tên phim" readonly>  
                     
                     <div class="card-value-container">  
                         <div class="value-option" onclick="selectValue(20000)">20,000 VND</div>  
@@ -41,6 +44,30 @@
                         <div class="value-option" onclick="selectValue(200000)">200,000 VND</div>  
                         <div class="value-option" onclick="selectValue(300000)">300,000 VND</div>  
                         <div class="value-option" onclick="selectValue(500000)">500,000 VND</div>  
+                    </div>  
+
+                    <div class="card-name-container">  
+                        <div class="name-option" onclick="selectName(A.Knights.War)">A Knight's War: (Giá: 200,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Home.Sweet.Home.Rebirth)">Home Sweet Home: Rebirth (Giá: 150,000 VND) </div>  
+                        <div class="name-option" onclick="selectName(The.Siege)">The Siege (Giá: 250,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Cleaner)">(Giá: 300,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(The.Hard.Hit)">The Hard Hit (Giá: 50,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(The.Passion.of.the.Christ)">The Passion of the Christ (Giá: 100,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Mufasa.The.Lion.King)">Mufasa: The Lion King (Giá: 400,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Conclave)">Conclave (Giá: 455,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Sonic.the.Hedgehog3)">Sonic the Hedgehog 3 (Giá: 500,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(The.Codes.of.War)">The Codes of War (Giá: 50,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Novocain)">Novocaine (Giá: 50,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Gunslingers)">Gunslingers (Giá: 230,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Sinners)">Sinners (Giá: 350,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(The.Woman.in.the.Yard)">The Woman in the Yard (Giá: 120,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Moana2)">Moana 2 (Giá: 300,000 VND)"</div>  
+                        <div class="name-option" onclick="selectName(A.Working.Man)">A Working Man (Giá: 220,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(In.the.Lost.Lands)">In the Lost Lands (Giá: 100,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(A.Minecraft.Movie)">A Minecraft Movie (Giá: 400,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(Captain.America.Brave.New.World)">Captain America: Brave New World (Giá: 500,000 VND)</div>  
+                        <div class="name-option" onclick="selectName(G20)">G20 (Giá: 58,000 VND)</div>  
+                        
                     </div>  
                     
                     <button class="charge-btn" onclick="chargeCard()">Nạp Thẻ</button>  
@@ -167,8 +194,24 @@
             gap: 10px;  
             margin-top: 10px;  
         }  
+
+        .card-name-container {  
+            display: flex;  
+            flex-wrap: wrap;  
+            gap: 10px;  
+            margin-top: 10px;  
+        }  
         
         .value-option {  
+            background-color: #f1f1f1;  
+            border: 1px solid #ddd;  
+            border-radius: 5px;  
+            padding: 8px 12px;  
+            cursor: pointer;  
+            transition: all 0.3s;  
+        }  
+
+        .name-option {  
             background-color: #f1f1f1;  
             border: 1px solid #ddd;  
             border-radius: 5px;  
@@ -182,8 +225,20 @@
             color: white;  
             border-color: #3498db;  
         }  
+
+        .name-option:hover {  
+            background-color: #3498db;  
+            color: white;  
+            border-color: #3498db;  
+        }  
         
         .value-option.selected {  
+            background-color: #3498db;  
+            color: white;  
+            border-color: #3498db;  
+        }  
+
+        .name-option.selected {  
             background-color: #3498db;  
             color: white;  
             border-color: #3498db;  
@@ -262,6 +317,19 @@
             
             event.target.classList.add('selected');  
             document.getElementById('card-value').value = value.toLocaleString('vi-VN') + ' VND';  
+
+           
+        }  
+
+        function selectName(name) {  
+            document.querySelectorAll('.name-option').forEach(option => {  
+                option.classList.remove('selected');  
+            });  
+            
+            event.target.classList.add('selected');  
+            document.getElementById('card-name').name = name.toLocaleString;  
+
+           
         }  
         
         function chargeCard() {  
@@ -269,13 +337,13 @@
             const cardNumber = document.getElementById('card-number').value;  
             const cardPin = document.getElementById('card-pin').value;  
             const cardValue = document.getElementById('card-value').value;  
-            
+            const cardName = document.getElementById('card-name').name;
             if (!cardType) {  
                 alert('Vui lòng chọn loại thẻ!');  
                 return;  
             }  
             
-            if (!cardNumber || !cardPin) {  
+            if (!cardNumber || !cardPin ) {  
                 alert('Vui lòng nhập đầy đủ số seri và mã thẻ!');  
                 return;  
             }  
@@ -284,8 +352,13 @@
                 alert('Vui lòng chọn mệnh giá thẻ!');  
                 return;  
             }  
+
+            if (!cardName) {  
+                alert('Vui lòng chọn tên phim!');  
+                return;  
+            }  
             
-            alert(`Nạp thẻ thành công!\nLoại thẻ: ${cardType}\nMệnh giá: ${cardValue}\nMã thẻ: ${cardPin.substring(0, 4)}****`);  
+            alert(`Nạp thẻ thành công!\nLoại thẻ: ${cardType}\nMệnh giá: ${cardValue}\nTên phim: ${cardName} \nMã thẻ: ${cardPin.substring(0, 4)}****`);  
         }  
         
         function getCode() {  
