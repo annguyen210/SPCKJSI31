@@ -16,16 +16,16 @@
 
     <footer>
 
-      <button1 id="contact-button">Liên Hệ</button1>
+      <button1 id="contact-button">Liên Hệ |</button1>
+      <button2 id="history-button">Lịch sử mua hàng</button2>
       <main>
         <div id="user-info"></div>
         <button id="logout-button">Đăng xuất</button>
       </main>
     </footer>
 
-    <script src="./js/load_api.js"></script>
-    <script src="./js/load_api2.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/trangchu/load_api.js"></script>
+    <script src="./js/trangchu/main.js"></script>
     <script src="./js/firebase.js"></script>
 
     <script>
@@ -36,8 +36,15 @@
       // Chuyển hướng về trang index
       window.location.href = "./html/contact.html";
     });
+
+    document
+    .getElementById("history-button")
+    .addEventListener("click", function () {
+      
+      // Chuyển hướng về trang index
+      window.location.href = "./html/history.html";
+    });
    </script>
   
 </body>
 </html>
-   
