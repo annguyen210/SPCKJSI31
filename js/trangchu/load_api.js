@@ -33,11 +33,14 @@ function displayMovies() {
       
               <button onclick="showbuyfilm('${encodeURIComponent(
                 movie.id
-              )}')">Thanh Toán Để Xem Phim 📝 </button>  
-
+              )}')">Đặt vé phim tại đây📝 </button>
+              
                <button onclick="showDetails('${encodeURIComponent(
                 movie.id
               )}')">Xem chi tiết phim </button>  
+
+              
+
       
               
           `;
