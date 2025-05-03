@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const userInfoDiv = document.getElementById("user-info");
   
-    if (currentUser.email) {
+    if (currentUser) {
       userInfoDiv.innerHTML = `  
           <p>Chào mừng: <strong>${currentUser.email}</strong></p>  
       `;
